@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 import { QuoteType } from "../../types/QuoteType";
 
 import classes from './QuoteItem.module.css';
 
 function QuoteItem(props: QuoteType){
+
     return (
         <li className={classes.item}>
             <figure>
@@ -11,9 +14,9 @@ function QuoteItem(props: QuoteType){
                 </blockquote>
                 <figcaption>{props.author}</figcaption>
             </figure>
-            <a className='btn'>
+            <Link className='btn' to={`/quotes/detail/${props.id}`}>
                 View Fullscreen
-            </a>
+            </Link>
         </li>
     );
 };
