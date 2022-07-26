@@ -15,7 +15,7 @@ interface CommentsParams{
 
 function Comments(){
     const [isAddingComment, setIsAddingComment] = useState(false);
-    const params = useParams<CommentsParams>();
+    const params = useParams<keyof CommentsParams>();
 
     const {sendRequest, status, data: loadedComments} = useHttp(getAllComments);
 
@@ -64,7 +64,7 @@ function Comments(){
                     Add a Comment
                 </button>
             )}
-            {isAddingComment && <NewCommentForm quoteId={params.id} onAddedComment={addedCommentHandler}/>}
+            {isAddingComment && params.id && <NewCommentForm quoteId={params.id} onAddedComment={addedCommentHandler}/>}
             {comments}
         </section>
     );

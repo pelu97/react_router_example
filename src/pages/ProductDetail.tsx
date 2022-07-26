@@ -5,7 +5,7 @@ interface ProductParams {
 }
 
 function ProductDetail(){
-    const params = useParams<ProductParams>();
+    const params = useParams<keyof ProductParams>();
 
     return (
         <section>

@@ -1,5 +1,5 @@
 import { useRef, useState, Fragment } from 'react';
-import { Prompt } from "react-router-dom";
+// import { Prompt } from "react-router-dom";
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
@@ -43,9 +43,11 @@ function QuoteForm(props: QuoteFormProps){
 
     return (
         <Fragment>
+            {/*
             <Prompt when={formFocused} message={(location) => {
                 return "Are you sure you want to leave? All your entered data will be lost!"
             }}/>
+            */}
             <Card>
                 <form onFocus={focusFormHandler} className={classes.form} onSubmit={(event) => {
                     event.preventDefault();

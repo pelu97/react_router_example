@@ -9,10 +9,10 @@ function MainNavigation(){
             <nav className={classes.nav}>
                 <ul>
                     <li>
-                        <NavLink to="/quotes" activeClassName={classes.active}>All Quotes</NavLink>
+                        <NavLink to="/quotes" className={(navData) => navData.isActive ? classes.active : ""}>All Quotes</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/quotes/new" activeClassName={classes.active}>Add Quote</NavLink>
+                        <NavLink to="/quotes/new" className={(navData) => navData.isActive ? classes.active : ""}>Add Quote</NavLink>
                     </li>
                 </ul>
             </nav>

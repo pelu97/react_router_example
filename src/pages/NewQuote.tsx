@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { QuoteType } from "../types/QuoteType";
 
 import { useHttp } from "../hooks/use-http";
@@ -9,7 +9,7 @@ import QuoteForm from "../components/quotes/QuoteForm";
 
 function NewQuote(){
     // const [isLoading, setIsLoading] = useState(true);
-    const history = useHistory();
+    const navigate = useNavigate();
     const {sendRequest, status} = useHttp(addQuote);
 
     // useEffect(() => {
@@ -24,9 +24,10 @@ function NewQuote(){
 
     useEffect(() => {
         if(status === "completed"){
-            history.push("/quotes");
+            // history.push("/quotes");
+            navigate("/quotes");
         }
-    }, [status, history]);
+    }, [status, navigate]);
 
     function addQuoteHandler(quote: {author: string, text: string}){
         const newQuote: QuoteType = {
