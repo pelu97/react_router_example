@@ -8,7 +8,7 @@ import Layout from "./components/layout/Layout";
 import NotFound from "./pages/NotFound";
 
 // dummy data
-import { DUMMY_QUOTES } from "./data/DUMMY_QUOTES";
+// import { DUMMY_QUOTES } from "./data/DUMMY_QUOTES";
 
 // import Welcome from "./pages/Welcome";
 // import Products from "./pages/Products";
@@ -25,7 +25,7 @@ function App() {
                     <Redirect to="/quotes"/>
                 </Route>
                 <Route path="/quotes" exact>
-                    <AllQuotes quotes={DUMMY_QUOTES}/>
+                    <AllQuotes/>
                 </Route>
                 <Route path="/quotes/detail/:id">
                     <QuoteDetail/>

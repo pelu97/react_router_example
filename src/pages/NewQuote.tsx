@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { QuoteType } from "../types/QuoteType";
+
+import { useHttp } from "../hooks/use-http";
+import { addQuote } from "../lib/api";
 
 import QuoteForm from "../components/quotes/QuoteForm";
 
 function NewQuote(){
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    const {sendRequest, status} = useHttp(addQuote);
+
+    // useEffect(() => {
+    //     const timeout = setTimeout(() => {
+    //         setIsLoading(false);
+    //     }, 1000);
+    //
+    //     return () => {
+    //         clearTimeout(timeout);
+    //     }
+    // }, []);
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
-
-        return () => {
-            clearTimeout(timeout);
+        if(status === "completed"){
+            history.push("/quotes");
         }
-    }, []);
+    }, [status, history]);
 
     function addQuoteHandler(quote: {author: string, text: string}){
         const newQuote: QuoteType = {
@@ -27,12 +37,14 @@ function NewQuote(){
 
         console.log(newQuote);
 
-        history.push("/quotes");
+        sendRequest(quote);
+
+        // history.push("/quotes");
     }
 
     return(
         <div>
-            <QuoteForm isLoading={isLoading} onAddQuote={addQuoteHandler}/>
+            <QuoteForm isLoading={status === "pending"} onAddQuote={addQuoteHandler}/>
         </div>
     );
 }
