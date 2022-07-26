@@ -6,8 +6,11 @@ This project was developed while taking the "React - The Complete Guide" course 
 
 In the project directory, you can run:
 
+### `npm install`
+
+to install dependencies, and
+
 ### `npm start`
 
-Runs the app in the development mode.\
+to run the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
